@@ -11,10 +11,10 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Password Manager</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QPushButton" name="injectPass">
+   <widget class="QPushButton" name="inject_pass">
     <property name="geometry">
      <rect>
       <x>310</x>
@@ -144,7 +144,7 @@ text-align: center;</string>
      </item>
     </layout>
    </widget>
-   <widget class="QTableView" name="showPass">
+   <widget class="QTableView" name="show_pass">
     <property name="geometry">
      <rect>
       <x>380</x>
@@ -156,6 +156,51 @@ text-align: center;</string>
     <property name="styleSheet">
      <string notr="true">font: 12pt &quot;Fira Code&quot;;</string>
     </property>
+   </widget>
+   <widget class="QPushButton" name="add_manual">
+    <property name="geometry">
+     <rect>
+      <x>340</x>
+      <y>520</y>
+      <width>31</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(0, 170, 0);
+font: 16pt &quot;Fira Code&quot;;
+color: white;
+font-weight: bold;</string>
+    </property>
+    <property name="text">
+     <string>+</string>
+    </property>
+   </widget>
+   <widget class="QWidget" name="horizontalLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>210</x>
+      <y>390</y>
+      <width>168</width>
+      <height>80</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QPushButton" name="edit_row">
+       <property name="text">
+        <string>Edit row</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="delete_row">
+       <property name="text">
+        <string>Delete row</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
