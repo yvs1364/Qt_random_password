@@ -21,6 +21,7 @@ class Pass{
     QString generate();
     void fill_data();
     void inject(QString pass,QString url);
+    void update_data(QString id,QString pass,QString url);
     void clear_data();
     void delete_by_id(int id);
 };

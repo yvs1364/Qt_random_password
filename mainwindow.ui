@@ -19,12 +19,25 @@
      <rect>
       <x>310</x>
       <y>170</y>
-      <width>41</width>
-      <height>24</height>
+      <width>51</width>
+      <height>21</height>
      </rect>
     </property>
+    <property name="sizeIncrement">
+     <size>
+      <width>0</width>
+      <height>20</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+      <italic>false</italic>
+      <bold>true</bold>
+     </font>
+    </property>
     <property name="styleSheet">
-     <string notr="true">font: 12pt &quot;Fira Code&quot;;</string>
+     <string notr="true"/>
     </property>
     <property name="text">
      <string>&gt;&gt;</string>
@@ -49,7 +62,7 @@
         </size>
        </property>
        <property name="styleSheet">
-        <string notr="true">font: 12pt &quot;Fira Code&quot;;</string>
+        <string notr="true"/>
        </property>
        <property name="text">
         <string>Site web</string>
@@ -90,9 +103,21 @@
          <height>0</height>
         </size>
        </property>
+       <property name="sizeIncrement">
+        <size>
+         <width>0</width>
+         <height>20</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+         <italic>false</italic>
+         <bold>true</bold>
+        </font>
+       </property>
        <property name="styleSheet">
-        <string notr="true">font: 12pt &quot;Fira Code&quot;;
-color : rgb(0, 0, 0);</string>
+        <string notr="true"/>
        </property>
        <property name="text">
         <string>Generate</string>
@@ -121,7 +146,7 @@ color : rgb(0, 0, 0);</string>
         </size>
        </property>
        <property name="styleSheet">
-        <string notr="true">font: 12pt &quot;Fira Code&quot;;</string>
+        <string notr="true"/>
        </property>
        <property name="text">
         <string>Mot de passe généré</string>
@@ -150,51 +175,60 @@ text-align: center;</string>
       <x>380</x>
       <y>20</y>
       <width>391</width>
-      <height>531</height>
+      <height>491</height>
      </rect>
     </property>
     <property name="styleSheet">
      <string notr="true">font: 12pt &quot;Fira Code&quot;;</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="add_manual">
-    <property name="geometry">
-     <rect>
-      <x>340</x>
-      <y>520</y>
-      <width>31</width>
-      <height>24</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: rgb(0, 170, 0);
-font: 16pt &quot;Fira Code&quot;;
-color: white;
-font-weight: bold;</string>
-    </property>
-    <property name="text">
-     <string>+</string>
-    </property>
-   </widget>
    <widget class="QWidget" name="horizontalLayoutWidget">
     <property name="geometry">
      <rect>
-      <x>210</x>
-      <y>390</y>
-      <width>168</width>
-      <height>80</height>
+      <x>380</x>
+      <y>510</y>
+      <width>391</width>
+      <height>41</height>
      </rect>
     </property>
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
-      <widget class="QPushButton" name="edit_row">
+      <widget class="QPushButton" name="add_manual">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>20</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+         <italic>false</italic>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true"/>
+       </property>
        <property name="text">
-        <string>Edit row</string>
+        <string>Add row</string>
        </property>
       </widget>
      </item>
      <item>
       <widget class="QPushButton" name="delete_row">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>20</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+         <bold>true</bold>
+        </font>
+       </property>
        <property name="text">
         <string>Delete row</string>
        </property>
@@ -212,19 +246,7 @@ font-weight: bold;</string>
      <height>21</height>
     </rect>
    </property>
-   <widget class="QMenu" name="menuOptions">
-    <property name="title">
-     <string>Options</string>
-    </property>
-    <addaction name="actionClear_db"/>
-   </widget>
-   <addaction name="menuOptions"/>
   </widget>
-  <action name="actionClear_db">
-   <property name="text">
-    <string>Clear db</string>
-   </property>
-  </action>
  </widget>
  <resources/>
  <connections/>

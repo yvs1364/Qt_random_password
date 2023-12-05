@@ -22,6 +22,7 @@ set(PROJECT_SOURCES
 				mainwindow.h
 				Pass.h
 				mainwindow.ui
+				style.qss
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

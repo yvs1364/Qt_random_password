@@ -1,18 +1,33 @@
 #include "mainwindow.h"
 #include "inputdialog.h"
-
+#include <QFile>
+#include <qDir>
+#include <QFontDatabase>
 
 MainWindow::MainWindow(QWidget *parent)
 : QMainWindow(parent)
 , ui(new Ui::MainWindow){
+  QFontDatabase::addApplicationFont("D:/Dev/qt/QT_Random_Password/stratos-mediumitalic.otf");
+
+  QFile file("D:/Dev/qt/QT_Random_Password/style.qss");
+  if(file.open(QFile::ReadOnly)) {
+    QString StyleSheet = QLatin1String(file.readAll());
+    qApp->setStyleSheet(StyleSheet);
+  }
+
+
   pass = new Pass;
   ui->setupUi(this);
   fill_data();
 
+  QAction *option = ui->menuBar->addAction("Option");
+  connect(option, SIGNAL(triggered()), this, SLOT(clear_db()));
+
   connect(ui->add_manual,&QPushButton::clicked,this,&MainWindow::add_manual);
   connect(ui->delete_row,&QPushButton::clicked,this,&MainWindow::delete_row);
-  connect(ui->show_pass->model(),SIGNAL(dataChanged(QModelIndex,QModelIndex)),SLOT(edit_row(QModelIndex,QModelIndex)));
+  connect(ui->show_pass->model(),SIGNAL(dataChanged(QModelIndex,QModelIndex)),SLOT(edit_row(QModelIndex)));
   connect(ui->inject_pass,&QPushButton::clicked,this,&MainWindow::inject_pass);
+
 
   connect(ui->Generate,&QPushButton::clicked,this,[this](){
     ui->input_pass->setText(pass->generate());
@@ -45,7 +60,6 @@ void MainWindow::fill_data(){
     ui->show_pass->setColumnHidden(0, true);
   }
 }
-
 
 void MainWindow::add_manual(){
   QStringList list = InputDialog::getStrings(this);
@@ -80,16 +94,15 @@ void MainWindow::delete_row(){
   delete model;
 }
 
-void MainWindow::edit_row(const QModelIndex &iCol, const QModelIndex &iRow){
-  int col = iCol.column();
-  int row = iRow.row();
+void MainWindow::edit_row(const QModelIndex &iRow){
+   int row = iRow.row();
 
-    QString valor1 = ui->show_pass->model()->data(ui->show_pass->model()->index(row,1)).toString();
-    QString valor2 = ui->show_pass->model()->data(ui->show_pass->model()->index(row,2)).toString();
+  int id = ui->show_pass->model()->data(ui->show_pass->model()->index(row,0)).toInt();
+  QString passValue = ui->show_pass->model()->data(ui->show_pass->model()->index(row,1)).toString();
+  QString url = ui->show_pass->model()->data(ui->show_pass->model()->index(row,2)).toString();
 
-    ui->show_pass->model()->setData(ui->show_pass->model()->index(row ,col + 1),valor1);
-    ui->show_pass->model()->setData(ui->show_pass->model()->index(row,col + 2),valor2);
-    qDebug()<<valor1<< "  " << valor2;
+  pass->update_data(QVariant(id).toString(),passValue,url);
+
 }
 
 void MainWindow::inject_pass(){
@@ -105,7 +118,7 @@ void MainWindow::inject_pass(){
 
 
 
-void MainWindow::on_actionClear_db_triggered(){
+void MainWindow::clear_db(){
   QMessageBox::StandardButton reply;
   reply = QMessageBox::question(this, "Delete data", "Are you sure to delete all data and quit ?",
   QMessageBox::Yes|QMessageBox::No);

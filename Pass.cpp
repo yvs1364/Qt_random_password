@@ -26,6 +26,19 @@ void Pass::inject(QString pass,QString url){
   }
 }
 
+void Pass::update_data(QString id,QString pass, QString url){
+  try {
+    qDebug()<<"UPDATE pass set pass='"+pass+"',website='"+url+"' WHERE id='"+id+"'";
+    m_query.exec("UPDATE pass set pass='"+pass+"',website='"+url+"' WHERE id='"+id+"'");
+  } catch (...) {
+    qFatal("Error data not added!");
+  }
+}
+
+
+
+
+
 
 void Pass::clear_data(){
   // Delete data

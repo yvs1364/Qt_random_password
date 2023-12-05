@@ -12,8 +12,7 @@ QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
 
-class MainWindow : public QMainWindow
-{
+class MainWindow : public QMainWindow{
   Q_OBJECT
 
 public:
@@ -25,10 +24,9 @@ public:
 private slots:
   void add_manual();
   void delete_row();
-  void edit_row(const QModelIndex &iCol, const QModelIndex &iRow);
+  void edit_row(const QModelIndex &iRow);
   void inject_pass();
-  void on_actionClear_db_triggered();
-
+  void clear_db();
 
 private:
   Ui::MainWindow *ui;

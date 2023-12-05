@@ -1,0 +1,58 @@
+QWidget {
+	background-color: #2a2c2d;
+}
+QMenuBar{
+	background-color: #2a2c2d;
+	color: #D3D3D3;
+}
+
+QMenu:hover{
+	background-color: #D3D3D3;
+}
+
+QTableView{
+ color: #2a2c2d;
+ background-color: #D3D3D3;
+ border-radius: 4px;
+}
+QLabel{
+ color: #D3D3D3;
+ font: 16px "Stratos Medium";
+}
+
+QTextEdit{
+color: #2a2c2d;
+background-color: #D3D3D3;
+border-radius: 4px;
+}
+
+QTextBrowser{
+ color: #2a2c2d;
+ background-color: #D3D3D3;
+ border-radius: 4px;
+ font: 14px "Stratos Medium";
+}
+
+QLineEdit{
+ color: #2a2c2d;
+ background-color: #D3D3D3;
+ border-radius: 4px;
+ min-height: 20px;
+}
+
+QPushButton{
+ color: #000;
+ background-color: #f8f9fa;
+ border-radius: 4px;
+ min-height: 20px;
+ min-width: 50px;
+ font: 16px "Stratos Medium";
+}
+
+QPushButton:hover{
+ background-color: #f9fafb;
+}
+
+QPushButton:pressed{
+ background-color: #e9e9ea;
+}
