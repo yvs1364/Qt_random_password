@@ -5,31 +5,31 @@
 #include <qDebug>
 #include <QAbstractItemModel>
 #include <QMessageBox>
+#include <ui_mainwindow.h>
 #include "Pass.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
 
-class MainWindow : public QMainWindow
-{
-    Q_OBJECT
+class MainWindow : public QMainWindow{
+  Q_OBJECT
 
 public:
-    MainWindow(QWidget *parent = nullptr);
-    ~MainWindow();
+  MainWindow(QWidget *parent = nullptr);
+  ~MainWindow();
 
-    void fill_data();
+  void fill_data();
 
-    private slots:
-    void on_Generate_clicked();
-
-    void on_injectPass_clicked();
-
-    void on_actionClear_db_triggered();
+private slots:
+  void add_manual();
+  void delete_row();
+  void edit_row(const QModelIndex &iRow);
+  void inject_pass();
+  void clear_db();
 
 private:
-    Ui::MainWindow *ui;
-    Pass *pass;
+  Ui::MainWindow *ui;
+  Pass *pass;
 };
 #endif // MAINWINDOW_H

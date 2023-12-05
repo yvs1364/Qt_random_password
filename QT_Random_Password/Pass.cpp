@@ -1,13 +1,13 @@
 #include "Pass.h"
 
-Pass::Pass(){ create_table(); }
+Pass::Pass(){}
 
 Pass::~Pass(){}
 
-std::string Pass::generate(){
+QString Pass::generate(){
   srand(time(NULL));
   int randNum;
-  std::string finalPwd;
+  QString finalPwd;
   for (int i = 0; i < m_passLength; i++) {
     randNum = rand() % m_allChar.length() + 1;
     finalPwd += m_allChar[randNum];
@@ -15,38 +15,47 @@ std::string Pass::generate(){
   return finalPwd ;
 }
 
-void Pass::create_table(){
-  // Create SQLITE
-  // =============
-  if (QSqlDatabase::isDriverAvailable("QSQLITE")){
-    m_db.setDatabaseName(m_path);
 
-    if (m_db.open()){
-      try {
-        m_query.exec("CREATE TABLE pass (id INTEGER PRIMARY KEY, pass TEXT, website TEXT, unique (pass, website))");
-      } catch (...) {
-        qDebug("Table not created!");
-      }
-    }else{
-      qDebug("Dirver not available!");
-    }
-  }
-}
 void Pass::inject(QString pass,QString url){
   // Inject SQLITE
   // =============
-  if (m_db.open()){
-    try {
-      m_query.exec("INSERT INTO pass(pass, website) VALUES('"+pass+"','"+url+"')");
-    } catch (...) {
-      qFatal("Error data not added!");
-    }
-
-  }else{
-    qDebug("DB not open!");
+  try {
+    m_query.exec("INSERT INTO pass(pass, website) VALUES('"+pass+"','"+url+"')");
+  } catch (...) {
+    qFatal("Error data not added!");
   }
 }
 
+void Pass::update_data(QString id,QString pass, QString url){
+  try {
+    qDebug()<<"UPDATE pass set pass='"+pass+"',website='"+url+"' WHERE id='"+id+"'";
+    m_query.exec("UPDATE pass set pass='"+pass+"',website='"+url+"' WHERE id='"+id+"'");
+  } catch (...) {
+    qFatal("Error data not added!");
+  }
+}
+
+
+
+
+
+
+void Pass::clear_data(){
+  // Delete data
+  // =============
+  try {
+    m_query.exec("DELETE FROM pass");
+  } catch (...) {
+    qFatal("Error data not cleared!");
+  }
+}
+void Pass::delete_by_id(int id){
+  try {
+    m_query.exec("DELETE FROM pass where id='"+QString::number(id)+"'");
+  } catch (...) {
+    qFatal("Error data not cleared!");
+  }
+}
 //void Pass::inject(QString pass){
 //  // Setup the model
 //  QSqlTableModel *model = new QSqlTableModel();
@@ -65,19 +74,3 @@ void Pass::inject(QString pass,QString url){
 
 //  model->select();
 //}
-
-void Pass::clear_data(){
-  // Delete data
-  // =============
-
-  if (m_db.open()){
-    try {
-      m_query.exec("DELETE FROM pass");
-    } catch (...) {
-      qFatal("Error data not cleared!");
-    }
-
-  }else{
-    qDebug("DB not open!");
-  }
-}

@@ -17,11 +17,12 @@ find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core)
 
 set(PROJECT_SOURCES
         main.cpp
-        mainwindow.cpp
+				mainwindow.cpp
 				Pass.cpp
-        mainwindow.h
+				mainwindow.h
 				Pass.h
-        mainwindow.ui
+				mainwindow.ui
+				style.qss
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
@@ -43,6 +44,9 @@ else()
     else()
         add_executable(QT_Random_Password
             ${PROJECT_SOURCES}
+						login.h login.cpp login.ui
+						database.h database.cpp
+						inputdialog.h inputdialog.cpp
         )
     endif()
 endif()
